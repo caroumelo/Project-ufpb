@@ -24,7 +24,8 @@ const doGet = (url) => {
 doGet('https://rickandmortyapi.com/api/character').then(console.log).catch(console.error);
 */
 
-/*opção 2: const response = fetch('https://rickandmortyapi.com/api/character')
+//opção 2: 
+const response = fetch('https://rickandmortyapi.com/api/character')
     .then(function(responseData){
         return responseData.json();
     })
@@ -34,7 +35,6 @@ doGet('https://rickandmortyapi.com/api/character').then(console.log).catch(conso
     .catch(function(e){
         console.log('DEU ERRO');
     })
-*/
 
 /* opção 3:
 
