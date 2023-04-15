@@ -1,4 +1,46 @@
-let url = "https://rickandmortyapi.com/api/character"
+// async function fetchApi(){
+//     const response = fetch('https://rickandmortyapi.com/api/character')
+//     .then(response => response.json())
+//     .then(jsonData =>{
+//         console.log('entrei');
+//         const list = document.querySelector('#list-person');
+//         jsonData.map((item )=>{
+//             const li = document.createElement('li');
+//             li.setAttribute('id',item.id);
+//             li.innerHTML = item.name;
+//             list.appendChild(li);
+//         })
+
+//         })
+//     .catch(function(e){
+//             console.log('DEU ERRO',e);
+//         })}
+const fetchApi = async () => {
+  const response = await fetch("https://rickandmortyapi.com/api/character");
+  const dados = await response.json();
+  console.log(dados.results);
+  const listUL = document.getElementById("list-person");
+  dados.results.map(item => {
+    const listCharacter = document.createElement("li");
+    const avatar = document.createElement("img");
+    const speciesTitle = document.createElement('span');
+
+    listCharacter.setAttribute("id", item.id);
+    speciesTitle.setAttribute("id", item.species);
+    avatar.setAttribute("src",item.image);
+    
+    listCharacter.innerHTML = item.name;
+    speciesTitle.innerHTML = "Espécie: "+ item.species;
+    listCharacter.appendChild(speciesTitle);
+    listCharacter.appendChild(avatar);
+    listUL.appendChild(listCharacter);
+  });
+
+};
+
+window.onload = () => {
+  fetchApi();
+};
 
 // function fetchApi(url){
 //     fetch(url)
@@ -6,7 +48,7 @@ let url = "https://rickandmortyapi.com/api/character"
 //     .then(data => {
 //         const listPerson = document.querySelector("#list-p")
 //     })
-// }  
+// }
 /*
 opção 1:
 const doGet = (url) => {
@@ -22,18 +64,6 @@ const doGet = (url) => {
     return new Promise(promiseCallback); 
 }
 doGet('https://rickandmortyapi.com/api/character').then(console.log).catch(console.error);
-*/
-
-/*opção 2: const response = fetch('https://rickandmortyapi.com/api/character')
-    .then(function(responseData){
-        return responseData.json();
-    })
-    .then(function(jsonData){
-        console.log(jsonData);
-    })
-    .catch(function(e){
-        console.log('DEU ERRO');
-    })
 */
 
 /* opção 3:
