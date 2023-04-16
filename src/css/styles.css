@@ -1,9 +1,9 @@
-.container {
+.container-body-center {
     display: flex;
     justify-content: center;
 }
 
-.card {
+.list-cards {
     margin: 100px;
     width: 300px;
     height: 500px;
@@ -11,3 +11,17 @@
     margin-top: 100px;
     background-color: #202020;
 }
+
+.imagem{
+    display: flex;
+    justify-content: center;   
+}
+
+.text{
+    text-align: center;
+    color: #fff;
+    font-weight: 500px;
+    font-size: 25px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
