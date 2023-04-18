@@ -21,18 +21,27 @@ const fetchApi = async () => {
   console.log(dados.results);
   const listUL = document.getElementById("list-person");
   dados.results.map(item => {
+
     const listCharacter = document.createElement("li");
+    const namePerson = document.createElement('p');
     const avatar = document.createElement("img");
-    const speciesTitle = document.createElement('span');
+    const speciesTitle = document.createElement('p');
+    
 
     listCharacter.setAttribute("id", item.id);
+    listCharacter.classList.add("card");
+    namePerson.classList.add("text");
+    speciesTitle.classList.add("text");
     speciesTitle.setAttribute("id", item.species);
     avatar.setAttribute("src",item.image);
     
-    listCharacter.innerHTML = item.name;
+    namePerson.innerHTML = item.name;
     speciesTitle.innerHTML = "Espécie: "+ item.species;
-    listCharacter.appendChild(speciesTitle);
+    listCharacter.appendChild(namePerson);
     listCharacter.appendChild(avatar);
+    listCharacter.appendChild(speciesTitle);
+    
+    
     listUL.appendChild(listCharacter);
   });
 
