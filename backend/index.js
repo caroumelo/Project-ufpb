@@ -1,7 +1,10 @@
-import express, { response } from 'express';
+import { error } from 'console';
+import express from 'express'
+import cors from 'express'
 import admin from 'firebase-admin';
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended:true}))
 
@@ -35,20 +38,20 @@ app.post('/pitSitters/create', async (request,response) =>{
         console.log(request.body);
         const data =  request.body;
         console.log('New USer',data); 
-        await User.add({data})
+        await User.add(data)
         response.send({msg:'User add'});
     } catch(error){
         response.send(error);
     }
     
 })
-//error
-app.delete('/:id', async(request,response) =>{
-    try{
-        const id = request.params.id;
-        console.log('id',id)
-        await User.doc(id).delete();
-        response.send({msg:'Deleted'})
+
+app.delete('/pitSitters/delete', async(request,response) =>{
+try{
+    const id = request.body.id;
+    console.log('id',id)
+    await User.doc(id).delete();
+   response.send({msg:"Deleted"});
 
     }catch(error){
         console.log('error',error)
@@ -56,7 +59,20 @@ app.delete('/:id', async(request,response) =>{
 
     }
 })
-
+app.post("/pitSitters/update",async (request,response) =>{
+    try{
+        const id = request.body.id;
+        console.log('id',id)
+        delete request.body.id;
+        const data = request.body;
+        console.log("data",data)
+        await User.doc(id).update(data);
+       response.send({msg:"Updated"});
+    }catch(error){
+        response.send(error)
+    }
+    
+    })
 
 
 
