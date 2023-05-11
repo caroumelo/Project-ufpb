@@ -1,7 +1,9 @@
-import express, { response } from 'express';
+import express from 'express'
+import cors from 'express'
 import admin from 'firebase-admin';
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended:true}))
 
@@ -42,27 +44,24 @@ app.get('/pitSitters',(request,response) =>{
 //     }
 // })
 app.post('/pitSitters/create', async (request,response) =>{
-    try {
-        console.log('Receiving POST request...');
-        console.log('Request body:', request.body);
-        const data = request.body;
-        console.log('New User:', data);
-        const docRef = await User.add(data);
-        console.log('New document created with ID:', docRef.id);
-        response.send({msg:'User added'});
-    } catch(error) {
-        console.error('Error in POST handler:', error);
-        response.status(500).send(error);
-    }
-});
-
-//error
-app.delete('/:id', async(request,response) =>{
     try{
-        const id = request.params.id;
-        console.log('id',id)
-        await User.doc(id).delete();
-        response.send({msg:'Deleted'})
+        console.log(request.body);
+        const data =  request.body;
+        console.log('New USer',data); 
+        await User.add(data)
+        response.send({msg:'User add'});
+    } catch(error){
+        response.send(error);
+    }
+    
+})
+
+app.delete('/pitSitters/delete', async(request,response) =>{
+try{
+    const id = request.body.id;
+    console.log('id',id)
+    await User.doc(id).delete();
+   response.send({msg:"Deleted"});
 
     }catch(error){
         console.log('error',error)
@@ -70,5 +69,23 @@ app.delete('/:id', async(request,response) =>{
 
     }
 })
+app.post("/pitSitters/update",async (request,response) =>{
+    try{
+        const id = request.body.id;
+        console.log('id',id)
+        delete request.body.id;
+        const data = request.body;
+        console.log("data",data)
+        await User.doc(id).update(data);
+       response.send({msg:"Updated"});
+    }catch(error){
+        response.send(error)
+    }
+    
+    })
+
+
+
+
 
 app.listen(3000,() => console.log('Api iniciada'));
