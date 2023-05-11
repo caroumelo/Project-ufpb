@@ -30,18 +30,32 @@ app.get('/pitSitters',(request,response) =>{
    
 })
 //salvando sem body
+// app.post('/pitSitters/create', async (request,response) =>{
+//     try{
+//         console.log(request.body);
+//         const data =  request.body;
+//         console.log('New USer',data); 
+//         await User.add(data) // só alterei essa linha, pq quando pesquisei, disse:  No Firebase, o método add espera um objeto diretamente, não um objeto com uma propriedade data. Então, em vez de User.add({data}), ficou User.add(data).mas não testei
+//         response.send({msg:'User add'});
+//     } catch(error){
+//         response.send(error);
+//     }
+// })
 app.post('/pitSitters/create', async (request,response) =>{
-    try{
-        console.log(request.body);
-        const data =  request.body;
-        console.log('New USer',data); 
-        await User.add(data) // só alterei essa linha, pq quando pesquisei, disse:  No Firebase, o método add espera um objeto diretamente, não um objeto com uma propriedade data. Então, em vez de User.add({data}), ficou User.add(data).mas não testei
-        response.send({msg:'User add'});
-    } catch(error){
-        response.send(error);
+    try {
+        console.log('Receiving POST request...');
+        console.log('Request body:', request.body);
+        const data = request.body;
+        console.log('New User:', data);
+        const docRef = await User.add(data);
+        console.log('New document created with ID:', docRef.id);
+        response.send({msg:'User added'});
+    } catch(error) {
+        console.error('Error in POST handler:', error);
+        response.status(500).send(error);
     }
-    
-})
+});
+
 //error
 app.delete('/:id', async(request,response) =>{
     try{
@@ -56,10 +70,5 @@ app.delete('/:id', async(request,response) =>{
 
     }
 })
-
-
-
-
-
 
 app.listen(3000,() => console.log('Api iniciada'));
