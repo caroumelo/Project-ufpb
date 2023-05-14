@@ -85,7 +85,4 @@ app.post("/pitSitters/update",async (request,response) =>{
     })
 
 
-
-
-
 app.listen(3000,() => console.log('Api iniciada'));

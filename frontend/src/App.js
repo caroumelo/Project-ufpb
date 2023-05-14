@@ -1,11 +1,17 @@
+import FormsUser from "./pages/formsUser";
+
 function App() {
   return (
 
     
 
-        <h1>
-         PETSPACE & PETSITTERS
-        </h1>
+        <>
+        <div class="container-md">
+        <h1>PETSPACE & PETSITTERS</h1>
+        <FormsUser />
+        </div>
+        
+        </>
       
     
   );
