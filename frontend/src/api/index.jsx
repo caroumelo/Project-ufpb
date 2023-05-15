@@ -1,6 +1,5 @@
-import axios from 'axios';
-
-
-axios.get('http://localhost:3000/pitSitters')
-.then(response => console.log('response',response))
-.catch(error => console.log(error))
+import axios from "axios";
+const api = axios.create({
+    baseURL:"http://localhost:3000"
+})
+export default api;
