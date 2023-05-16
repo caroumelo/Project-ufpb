@@ -6,7 +6,7 @@ function App() {
     
 
         <>
-        <div class="container-md">
+        <div className="container-md">
         <h1>PETSPACE & PETSITTERS</h1>
         <FormsUser />
         </div>

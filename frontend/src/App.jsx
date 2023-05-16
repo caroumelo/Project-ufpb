@@ -2,6 +2,7 @@
 import React from "react";
 import Container from "./components/Container/Container";
 import Header from "./components/Header/Header";
+import FormsUser from "./pages/formsUser";
 
 function App() {
   return (
@@ -9,10 +10,7 @@ function App() {
     <>
     <div className="container-fluid">
     
-    <Header/>
-    <div></div>
-
-    <Container/>
+    <FormsUser></FormsUser>
     </div>
  
      
