@@ -1,41 +1,30 @@
 import react from 'react';
 // import {useHistory} from 'react-router-dom';
 import { useState } from 'react';
+import{useNavigate} from 'react-router-dom'
 import axios from 'axios';
+import api from '../api';
 
-// import './Form.css'; // ?
-
-// const initialValue = {
-//   FirstName:'',
-//   LastName:'',
-//   Adress:'',
-//   currency:'',
-//   value:'',
-//   Date:'',
-//   cpf:'',
-// }
-
-// const formUser=()=>{
-  
-// }
 const FormsUser = () => {
   const [FirstName, setFirstName] = useState("");
   const [LastName, setLastName] = useState("");
   const [Adress, setAdress] = useState("");
   const [cpf, setCpf] = useState("");
   const [Date, setDate] = useState("");
-  
+  const[user,setUser] = useState(null);  
+
+  const navigate = useNavigate();
+
   function onSubmit(ev){
     ev.preventDefault();
-
-
-    console.log(FirstName, LastName, Adress, cpf, Date);
     const newUser = {FirstName, LastName, Adress, cpf, Date};
 
-    axios.post('pitSitters/create', newUser).then((response)=>{
+    api.post('pitSitters/create', newUser).then((response)=>{
+      setUser(response.id);
       console.log('response',response);
+      navigate('/')
       
-      // history.push('/');
+   
    }).catch((error) =>{console.log(error)}); //add axios. URL da api e valor é todo o valor do forms incluindo os campos
   }
   return (

@@ -1,8 +1,8 @@
 //Para criar apáginad o perfil do usuário
 import React from "react";
-const Profile = () =>{
+const Home = () =>{
     return(
-        <h1>Profile</h1>
+        <h1>Home</h1>
     )
 }
-export default Profile;
+export default Home;
