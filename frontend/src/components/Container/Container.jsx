@@ -2,16 +2,17 @@ import Card from "../Card/Card";
 
 const Container= () =>{
     return (
-      <div className="container text-center" >
+         <div class="container" style={{color:'yellowgreen',width:"100%",height:"100%"}}>
          
-        <div className="row justify-content-center">
-          <div className="col-4">
-             <Card/>
+            {/* <Card/> */}
+        
+        </div>
+    
+         
 
            
-          </div>
-        </div>
-      </div>
+      
+
     );
 }
 export default Container

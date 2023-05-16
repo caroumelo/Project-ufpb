@@ -16,15 +16,19 @@ useEffect(()=>{
 
 return(
         <div className="card" style={{"width": "18rem"}}>
-        <img src={person}  className="card-img-top" alt="avatar"/>
+
         {pitSitters?.map((pitSitter)=>(
+          
+          <div className="card" style={{"width": "18rem"}}>
+          <img src={person}  className="card-img-top" alt="avatar"/>          
             <div className="card-body">
             <h5 className="card-title">{pitSitter.FirstName} {pitSitter.LastName}</h5>
             
             <p className="card-text">{pitSitter.Address}</p>
             <p className="card-text"> {pitSitter.money.currency} {pitSitter.money.value}</p>
         
-            <button href="#" className="btn btn-primary" >Go somewhere </button>
+            <button href="#" className="btn btn-primary" >Contatar</button>
+          </div>
           </div>
         ))}
           
