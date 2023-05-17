@@ -13,7 +13,7 @@ function App() {
     <Routes>
       <Route path="/" exact Component={Home}/>
       <Route path="/createProfile" exact Component={FormsUser}/>
-      <Route path="/edit" exact Component={Edit}/>
+      <Route path="/edit/:id" exact Component={Edit}/>
     </Routes>
     
     
