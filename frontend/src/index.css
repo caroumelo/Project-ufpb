@@ -1,24 +1,82 @@
 body {
   margin: 0;
   font-family: 'Roboto', 'sans-serif';
+  color: #F6DE96;
 }
 .row{
   margin:0;
 }
 .container{
-  padding: 70px 0;
+  padding: 50px 0;
+  background-color: #e9d0cdf5;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.card {
+  margin: 10px;
+}
+
+/* Para telas grandes (desktops, 992px e acima) */
+@media (min-width: 992px) {  
+  .card {
+    width: 23%; /* Considerando as margens, 4 cartões cabem na linha */
+  }
+}
+
+/* Para telas médias (tablets, 768px e acima) */
+@media (min-width: 768px) and (max-width: 991px) {  
+  .card {
+    width: 48%; /* Considerando as margens, 2 cartões cabem na linha */
+  }
+}
+
+/* Para telas pequenas (telefones em paisagem, 576px e acima) */
+@media (max-width: 767px) {  
+  .card {
+    width: 98%; /* Apenas um cartão por linha */
+  }
+}
+
+.card-img-top{
+  border: radius 50px;
+}
+.card-body{
+  background-color: #BADEE1;
+}
+
+.card-text{
+  color: #63717A;
+}
+
+.card-title{
+  color: #63717A;
+}
+
+.card-container{
+  background-color:#E9DFDF;
 }
 p,li{
   color: #444;
   font-size: 16px;
 }
 
+
 .navbar{
-  background-color:#9ACD32;
+  background-color:#FFB2A7;
 }
 #logo{
   width: 75px;
   border-radius: 50%;
+}
+
+.nav-link active{
+  text-align: #a48b73;
+  font-family:Arial, Helvetica, sans-serif;
 }
 .navbar-brand{
   padding: 0;

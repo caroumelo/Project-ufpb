@@ -2,6 +2,7 @@ import person from "../../assets/images/person.svg";
 import api from "../../api";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import './Card.css';
 const Card = () =>{
  const [pitSitters,setPitSitters] = useState([]);
  
@@ -19,28 +20,32 @@ function deleteUser(id){
     setPitSitters(pitSitters.filter(pitSitter => pitSitter.uid !== id));
 }
 
-return(
-        <div className="card" style={{"width": "18rem"}}>
+// import pets from "Project-ufpb/blob/frontend/src/assets/images/pets.jpg";
 
-        {pitSitters?.map((pitSitter)=>(
-          
-          <div className="card" style={{"width": "18rem"}}>
-          <img src={person}  className="card-img-top" alt="avatar"/>          
-            <div className="card-body">
+
+
+
+  return (
+     <div className="card-container" style={{ "display": "flex", "flexWrap": "wrap" }}>
+      {/* <img src={pets}/> */}
+      {pitSitters?.map((pitSitter) => (
+         <div className="card" style={{ "width": "18rem", "margin": "10px" }}>
+          <img src={person} style={{border:"14px solid #BADEE1", backgroundColor:"white"}}className="card-img-top" alt="avatar"  />
+          <div className="card-body">
             <h5 className="card-title">{pitSitter.firstName} {pitSitter.lastName}</h5>
-            
             <p className="card-text">{pitSitter.address}</p>
             <p className="card-text">R${pitSitter.price} </p>
             <p className="card-text">{pitSitter.preferences} </p>
-        <Link to={{pathname:`/edit/${pitSitter.uid}`}}>
-            <button href="#" className="btn btn-primary" >Editar</button>
-        </Link>
-            <button href="#" className="btn btn-primary" onClick={() => deleteUser(pitSitter.uid)} >Excluir</button>
+     
+            <Link to={{ pathname: `/edit/${pitSitter.uid}` }}>
+              <button className="btn btn-primary" style={{ marginRight: "12px"}}>Editar</button>
+            </Link>
+            <button className="btn btn-primary" onClick={() => deleteUser(pitSitter.uid)}>Excluir</button>
           </div>
-          </div>
-        ))}
-          
         </div>
-    )
+      ))}
+    </div>
+  )
 }
+
 export default Card;
