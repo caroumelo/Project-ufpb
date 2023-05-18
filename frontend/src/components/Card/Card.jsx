@@ -30,7 +30,7 @@ function deleteUser(id){
       {/* <img src={pets}/> */}
       {pitSitters?.map((pitSitter) => (
          <div className="card" style={{ "width": "18rem", "margin": "10px" }}>
-          <img src={person} style={{border:"14px solid #BADEE1", backgroundColor:"white"}}className="card-img-top" alt="avatar"  />
+          <img src={person} style={{border:"14px solid #b4c4c5", backgroundColor:"white"}}className="card-img-top" alt="avatar"  />
           <div className="card-body">
             <h5 className="card-title">{pitSitter.firstName} {pitSitter.lastName}</h5>
             <p className="card-text">{pitSitter.address}</p>

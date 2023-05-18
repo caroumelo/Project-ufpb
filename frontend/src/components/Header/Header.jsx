@@ -18,7 +18,7 @@ const Header = () => {
                 <Link className="nav-link" to="http://localhost:3001" style={{ color: '#8d745c', fontFamily: 'Sitka Small Semibold' }}>Página Inicial</Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link active" aria-current="page" style={{ color: '#8d745c', fontFamily: 'Sitka Small Semibold' }} href="#">Cadastre-se</a>
+                <Link className="nav-link" to="http://localhost:3001/createProfile" style={{ color: '#8d745c', fontFamily: 'Sitka Small Semibold' }}>Cadastre-se</Link>
               </li>
             </ul>
           </div>
