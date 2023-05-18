@@ -1,4 +1,4 @@
-import express from 'express'
+import express, { response } from 'express'
 import cors from 'express'
 import admin from 'firebase-admin';
 
@@ -45,6 +45,30 @@ app.get('/pitSitters',(request,response) =>{
    
 })
 
+
+app.get('/pitSitters/:id',async (request,response)=>{
+    try{
+        const userRef = User.doc(request.params.id);
+        const res = await userRef.get();
+        response.send(res.data());
+
+    }
+    catch(error){
+        response.send(error);
+    }
+})
+app.put("/pitSitters/update/:id",async (request,response) =>{
+    try{
+        const id = request.params.id;
+        delete request.body.id;
+        const data = request.body;
+        await User.doc(id).update(data);
+       response.send({msg:"Updated"});
+    }catch(error){
+        response.send(error)
+    }
+    
+    })
 app.post('/pitSitters/create', async (request,response) =>{
     try{
         console.log(request.body);
@@ -58,9 +82,9 @@ app.post('/pitSitters/create', async (request,response) =>{
     
 })
 
-app.delete('/pitSitters/delete', async(request,response) =>{
+app.delete('/pitSitters/delete/:id', async(request,response) =>{
 try{
-    const id = request.body.id;
+    const id = request.params.id;
     console.log('id',id)
     await User.doc(id).delete();
    response.send({msg:"Deleted"});
@@ -71,20 +95,7 @@ try{
 
     }
 })
-app.put("/pitSitters/update",async (request,response) =>{
-    try{
-        const id = request.body.id;
-        console.log('id',id)
-        delete request.body.id;
-        const data = request.body;
-        console.log("data",data)
-        await User.doc(id).update(data);
-       response.send({msg:"Updated"});
-    }catch(error){
-        response.send(error)
-    }
-    
-    })
+
 
 
 app.listen(3000,() => console.log('Api iniciada'));

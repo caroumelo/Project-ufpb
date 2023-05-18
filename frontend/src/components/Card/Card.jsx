@@ -14,7 +14,10 @@ useEffect(()=>{
 
  // eslint-disable-next-line react-hooks/exhaustive-deps
  },[])
-
+function deleteUser(id){
+    api.delete(`/pitSitters/delete/${id}`)
+    setPitSitters(pitSitters.filter(pitSitter => pitSitter.uid !== id));
+}
 
 return(
         <div className="card" style={{"width": "18rem"}}>
@@ -32,7 +35,7 @@ return(
         <Link to={{pathname:`/edit/${pitSitter.uid}`}}>
             <button href="#" className="btn btn-primary" >Editar</button>
         </Link>
-            <button href="#" className="btn btn-primary" >Excluir</button>
+            <button href="#" className="btn btn-primary" onClick={() => deleteUser(pitSitter.uid)} >Excluir</button>
           </div>
           </div>
         ))}
